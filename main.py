@@ -45,8 +45,8 @@ value_parameter = {
     "quantity": input('How many miles did you run today')
 }
 
-# response = requests.post(url=value_endpoint, json=value_parameter, headers=headers)
-# print(response.text)
+response = requests.post(url=value_endpoint, json=value_parameter, headers=headers)
+print(response.text)
 
 # Update value
 
@@ -60,8 +60,8 @@ update_parameter = {
 
 # print(response.text)
 
-delete_value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1/{today}"
-
-response = requests.delete(url=delete_value_endpoint, headers=headers)
-
-print(response.text)
+# delete_value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1/{today}"
+#
+# response = requests.delete(url=delete_value_endpoint, headers=headers)
+#
+# print(response.text)
