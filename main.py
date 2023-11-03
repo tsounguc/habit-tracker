@@ -42,7 +42,7 @@ value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1"
 today = datetime.now().strftime('%Y%m%d')
 value_parameter = {
     "date": today,
-    "quantity": "3.1"
+    "quantity": input('How many miles did you run today')
 }
 
 # response = requests.post(url=value_endpoint, json=value_parameter, headers=headers)
@@ -56,7 +56,12 @@ update_parameter = {
     "quantity": "5"
 }
 
-response = requests.put(url=update_value_endpoint, json=update_parameter, headers=headers)
+# response = requests.put(url=update_value_endpoint, json=update_parameter, headers=headers)
+
+# print(response.text)
+
+delete_value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1/{today}"
+
+response = requests.delete(url=delete_value_endpoint, headers=headers)
 
 print(response.text)
-
