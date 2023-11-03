@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 import requests
 
 USERNAME = ""
@@ -12,7 +14,6 @@ user_params = {
     "agreeTermsOfService": "yes",
     "notMinor": "yes",
 }
-
 
 # response = requests.post(url=pixela_endpoint, json=user_params)
 # print(response.text)
@@ -33,4 +34,17 @@ headers = {
     "X-USER-TOKEN": TOKEN,
 }
 
-requests.post(url=graph_endpoint, json=graph_config, headers=headers)
+# requests.post(url=graph_endpoint, json=graph_config, headers=headers)
+
+# Post value to graph
+
+value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1"
+
+value_parameter = {
+    "date": datetime.now().strftime('%Y%m%d'),
+    "quantity": "3.1"
+}
+
+response = requests.post(url=value_endpoint, json=value_parameter, headers=headers)
+
+print(response.text)
