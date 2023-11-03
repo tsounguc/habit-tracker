@@ -39,12 +39,24 @@ headers = {
 # Post value to graph
 
 value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1"
-
+today = datetime.now().strftime('%Y%m%d')
 value_parameter = {
-    "date": datetime.now().strftime('%Y%m%d'),
+    "date": today,
     "quantity": "3.1"
 }
 
-response = requests.post(url=value_endpoint, json=value_parameter, headers=headers)
+# response = requests.post(url=value_endpoint, json=value_parameter, headers=headers)
+# print(response.text)
+
+# Update value
+
+update_value_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1/{today}"
+
+update_parameter = {
+    "quantity": "5"
+}
+
+response = requests.put(url=update_value_endpoint, json=update_parameter, headers=headers)
 
 print(response.text)
+
